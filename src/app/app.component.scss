@@ -18,13 +18,14 @@
         width: 100%;
         height: 70px;
         /* background-color: #3b3355; */
-        background: $clrMain;
+        background: $darkGray;
         position: fixed;
         z-index: 2;
     }
     nav {
         z-index: 2;
-        background: linear-gradient(to bottom, $clrMain 70px, $clrLight 0);
+        background-color: $darkGray;
+        // background: linear-gradient(to bottom, $darkGray 70px, $clrLight 0);
         @include transition(left, 0.5s, ease-in-out);
         width: 300px;
         position: fixed;
@@ -35,74 +36,35 @@
             margin: 10px 76px;
         }
         ul {
-            border-bottom: 1px $clrMain solid;
+            border-bottom: 1px $darkGray solid;
             padding: 20px 0;
-
-            li {
-                .selected{
-                    .paddinground{
-                        background-color: lighten($clrMain, 15%);
+            li:hover{
+                color:white;
+                a{
+                    color:white;
+                    i{
+                        color:white;
+ 
                     }
                 }
+            }
+            li {
+                color:$lightGray;
+                .selected{
+
+                }
             
-                padding-left: 10px;
-                padding-right: 10px;
-                list-style: none;
-                    i{
-                        color:#9e9e9e;
-                        padding-left:5px;
-                        line-height: 56px;
-                        font-size: 1.6em;
-                        align-self: center;
-                        font-size: 18px;
-                        margin-left: 5px;
-                    }
-                    i:hover{
-                        color:#424242;
-                    }
-                    input{
-                        border-radius: 3px;
-                        border: 0.5px solid $clrMain;
-                        // font-size: 1.2em;
-                        // max-width:100px;
-                        color:$clrMain;
-                        line-height: 27px;
-                        max-width:300px;
-                        margin-top:15px;
-                        font-size: 1em;
-                        float:left;
-                        max-width: 140px;
-                    }
-                    .paddinground{
-                        margin-top:7.5px;
-                    // background-color: $clrMain;
-                    border-radius: 55px;
-                    padding: 5px;
-                    margin-right:10px;
-                    height: 35px;
-
-                    // width: 35px;
-
+                
                     }
                 img {
                     padding:2.5px;
                     width: 30px;
                     // margin: 5px;
                 }
-                .fridgeItem {
-                    display: block;
-                    width: 100%;
-                    .fridgeName {
-                        float: left;
-                    }
-                    .fridgeTemp {
-                        float: right;
-                    }
-                }
             }
-        }
+        
         a {
-            color: $clrMain;
+            color: $lightGray;
             text-decoration: none;
             display: flex;
             // height: 40px;

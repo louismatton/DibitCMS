@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: EnzoBold;
+    src: url(./assets/EnzoOT-Bold.otf);
+}
+
+@font-face {
+    font-family: EnzoLight;
+    src: url(./assets/EnzoOT-Light.otf);
+}
+
+@font-face {
+    font-family: EnzoMedi;
+    src: url(./assets/EnzoOT-Medi.otf);
+}
+
+* {
+    font-family: EnzoMedi;
+    scroll-behavior: smooth;
+    font-size: 14px;
+}
