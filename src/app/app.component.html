@@ -10,40 +10,23 @@
 
   </header>
   <nav>
+    <div class="background-color-logo" >
+          <img id="logo" src="../assets/Tekengebied 1dibitblack.svg" alt="">
+    </div>
     <ul>
-      <li>
-        <a href="">
-          <i class="fas fa-tachometer-alt fa-2x"></i>
-          Dashboard
-        </a>
-      </li>
-      <li>
-        <a href="">
-          <i class="far fa-newspaper fa-2x"></i>
-          Pages
-        </a>
-      </li>
-      <li>
-        <a href="">
-          <i class="fas fa-users fa-2x"></i>
-          Users
-        </a>
-      </li>
-      <li>
-        <a href="">
-          <i class="fas fa-cogs fa-2x"></i>
-          Settings
-        </a>
-      </li>
-      <li>
-        <a href="">
-          <i class="fas fa-sign-out-alt fa-2x"></i>
-          Signout
-        </a>
-      </li>
+        <li *ngFor='let navItem of navigationItems' >
+            <a [routerLink]='[navItem.routerLink]'  [id]='navItem.routerLink' [ngClass]="{'selected':isSelected(navItem.routerLink)}">
+               <!-- <a [routerLink]='[navItem.routerLink]'  [id]='navItem.routerLink' [ngClass]="{'selected',isSelected(navItem.routerLink)}" (click)='isSelected(navItem.routerLink)'> -->
+            
+                <i [ngClass]='navItem.image'></i>
+                <!-- <p></p> -->
+            <p (click)="navClose()">{{navItem.name}}</p>
+          </a>
+        </li>
+  
     </ul>
   </nav>
   <div class="container">
-    <!-- <router-outlet></router-outlet> -->
+    <router-outlet></router-outlet>
   </div>
 </div>
