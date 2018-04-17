@@ -4,6 +4,12 @@
   display: flex;
   flex-wrap: wrap;
   background-color: $clrWhite;
+  .classNoShow {
+    display: none;
+  }
+  .classShow {
+    display: inherit;
+  }
   .navAction {
     display: none;
     font-size: 1.5em;
@@ -20,6 +26,34 @@
     background: $darkGray;
     position: fixed;
     z-index: 2;
+    .profile {
+      line-height: center;
+      height: 50px;
+      margin-top: 10px;
+      z-index: 5;
+      margin-right: 60px;
+      margin-left: auto;
+      width: fit-content;
+      display: flex;
+      flex-direction: row;
+      .roundImg {
+        height: 50px;
+        
+        width: 50px;
+        overflow: hidden;
+        border-radius: 30px;
+        img {
+          height: 50px;
+        }
+      }
+      p {
+        font-size: 1.7em;
+        height: fit-content;
+        margin: auto;
+        margin-left:20px;
+        color:white;
+      }
+    }
   }
   nav {
     text-align: center;
@@ -44,7 +78,6 @@
         color: $lightGray; // height:50px;
         text-align: center;
         border-bottom: $lightGray solid 0.5px;
-        
         a {
           color: $lightGray;
           text-decoration: none;
@@ -83,6 +116,11 @@
   .container {
     width: 100%;
     height: 100%; // border-bottom: black 1px dashed; //tot hier komt de body. kleurverschil niet groot.
+  }
+  .classMargin {
     margin: 70px 0 0 300px;
+  }
+  .classNoMargin {
+    margin: 0;
   }
 }

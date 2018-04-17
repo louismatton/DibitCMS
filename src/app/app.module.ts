@@ -30,17 +30,17 @@ import {AuthGuard} from './guards/auth.guard';
       {path: 'login', component: LoginComponent},
 
       {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-      {path: 'pages', component: PagesComponent},
-      {path: 'users', component: UsersComponent},
-      {path: 'settings', component: SettingsComponent},
-      // {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-      // {path: '**', redirectTo: 'dashboard', pathMatch: 'full'}]
+      {path: 'pages', component: PagesComponent, canActivate: [AuthGuard] },
+      {path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
+      {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
+      {path: '', redirectTo: 'dashboard', pathMatch: 'full', canActivate: [AuthGuard] },
+      {path: '**', redirectTo: 'dashboard', pathMatch: 'full', canActivate: [AuthGuard] }
     ]
     ),
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserService, HttpClient],
+  providers: [UserService, HttpClient, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

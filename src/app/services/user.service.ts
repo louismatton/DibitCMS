@@ -7,7 +7,6 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
 
-
 @Injectable()
 export class UserService {
 
@@ -55,5 +54,4 @@ export class UserService {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
-
 }

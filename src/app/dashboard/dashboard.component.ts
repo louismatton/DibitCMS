@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "../services/user.service";
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,26 +8,48 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  authdataraw = JSON.parse(sessionStorage.getItem('Authorization'));
+  authdata = {
+    Authorization: this.authdataraw.token
+  };
 
-  constructor(private userservice: UserService, private http: HttpClient) {
+  constructor(private userservice: UserService, private http: HttpClient) {}
+  ngOnInit(): void {
+    const requestOptions = {
+      headers: new HttpHeaders(this.authdata),
+    };
+    console.log((this.authdataraw.token));
+
+    this.http.get('http://localhost:3000/tasks', requestOptions)
+      .map(res => {
+        //Maps the response object sent from the server
+        // console.log(res);
+        // console.log(res);
+      }).subscribe(tasks => {
+        // console.log(tasks);
+      });
+    this.http.get('http://localhost:3000/owntasks', requestOptions)
+      .map(res => {
+        //Maps the response object sent from the server
+        // console.log(res);
+        // console.log(res);
+      }).subscribe(tasks => {
+        // console.log(tasks);
+      });
+
+    this.http.get('http://localhost:3000/users', requestOptions)
+      .map(res => {
+        //Maps the response object sent from the server
+        // console.log(res);
+        console.log(res);
+      }).subscribe(users => {
+        console.log(users);
+      });
+
+    // this.userservice.getUsers()
+    // .subscribe(users => {
+    //   console.log(users);
+    // });
   }
-  ngOnInit():void {
-
-    
-      this.http.get('http://localhost:3000/tasks')
-        .map(res => {
-          //Maps the response object sent from the server
-          // console.log(res);
-          console.log(res);
-        }).subscribe(tasks =>{
-          console.log(tasks);
-        });
-    
-
-    this.userservice.getUsers()
-    .subscribe(fridges => {
-      console.log(fridges);
-    });
-  }
-
 }
+
