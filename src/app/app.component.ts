@@ -1,42 +1,53 @@
 import { Component, OnInit } from '@angular/core';
+import User from './models/User';
+import { AuthGuard } from './guards/auth.guard';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'app';
+  currentUser: User;
 
-ngOnInit(){
-  if (sessionStorage.getItem('Authorization')) {
-    // logged in so return true
-    // document.getElementById("container").style.margin='70px 0 0 300px';
-    // document.getElementById("loginbody").style.visibility='visible';
-    console.log('authorized');
-  }else{
-        //     document.getElementById("container").style.margin='0';
-        // document.getElementById("loginbody").style.visibility='invisible';
-        console.log('unauthorized');
+  constructor() {
+    // if(localStorage.getItem('Authorization')){
+    //   this.currentUser = (JSON.parse(localStorage.getItem('Authorization'))).user;
+    // }
+  }
+  ngOnInit() {
+    console.log(this.currentUser);
+    // if (sessionStorage.getItem('Authorization')) {
+    if (localStorage.getItem('Authorization')) {
+      // logged in so return true
+      // document.getElementById("container").style.margin='70px 0 0 300px';
+      // document.getElementById("loginbody").style.visibility='visible';
+      this.currentUser = (JSON.parse(localStorage.getItem('Authorization'))).user;
 
+      console.log('authorized');
+    } else {
+      this.currentUser.name="unknown";
+      //     document.getElementById("container").style.margin='0';
+      // document.getElementById("loginbody").style.visibility='invisible';
+      console.log('unauthorized');
+    }
   }
 
-}
-
-isStored(): boolean {
-  if (sessionStorage.getItem('Authorization')) {
-    // console.log('authorized');
-    return true;
+  isStored(): boolean {
+    // if (sessionStorage.getItem('Authorization')) {
+    if (localStorage.getItem('Authorization')) {
+      // console.log('authorized');
+      return true;
+    }
   }
-}
 
-isNotStored(): boolean {
-  if (!sessionStorage.getItem('Authorization')) {
-    return true;
+  isNotStored(): boolean {
+    if (!localStorage.getItem('Authorization')) {
+      // if (!sessionStorage.getItem('Authorization')) {
+      return true;
+    }
   }
-}
-
-
 
 
   isSelected(route): boolean {
@@ -72,20 +83,12 @@ isNotStored(): boolean {
       name: "Settings",
       routerLink: "settings"
     }
-    // ,
-    // {
-    //   image: "fas fa-sign-out-alt fa-2x",
-    //   name: "Signout",
-    //   routerLink: "signout"
-    // }
   ];
+
   logout() {
     // remove user from local storage to log user out
-    sessionStorage.removeItem('Authorization');
+    // sessionStorage.removeItem('Authorization');
+    localStorage.removeItem('Authorization');
   }
-
-
-
-  // div container
-  // div loginbody
 }
+

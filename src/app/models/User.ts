@@ -5,8 +5,6 @@ export class User {
     email: String;
     image: String;
   
-
-  
     constructor() {
       this._id = ""
       this.image = "https://openclipart.org/download/260694/circle-stroked-15.svg"

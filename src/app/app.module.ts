@@ -13,6 +13,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './services/user.service';
 import {AuthGuard} from './guards/auth.guard';
+import { AuthenticationService } from './services/authentication.service';
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import {AuthGuard} from './guards/auth.guard';
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserService, HttpClient, AuthGuard],
+  providers: [UserService, HttpClient, AuthGuard,AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

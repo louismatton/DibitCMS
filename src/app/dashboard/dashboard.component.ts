@@ -8,7 +8,8 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  authdataraw = JSON.parse(sessionStorage.getItem('Authorization'));
+  // authdataraw = JSON.parse(sessionStorage.getItem('Authorization'));
+  authdataraw = JSON.parse(localStorage.getItem('Authorization'));
   authdata = {
     Authorization: this.authdataraw.token
   };
@@ -45,11 +46,6 @@ export class DashboardComponent implements OnInit {
       }).subscribe(users => {
         console.log(users);
       });
-
-    // this.userservice.getUsers()
-    // .subscribe(users => {
-    //   console.log(users);
-    // });
   }
 }
 
