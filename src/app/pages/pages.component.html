@@ -1,3 +1,23 @@
-<p>
-  pages works!
-</p>
+<div class="pages">
+  <div class="pagesheader">
+    <p>Laatst aangepast</p>
+    <button class="button" id="addPage">
+      <i class="fa fa-plus"></i> New page</button>
+  </div>
+
+  <hr>
+  <ul>
+    <li *ngFor='let page of ownWebsite.pages'>
+      <div class="pageGroup">
+        <i class="fas fa-bars fa-5x"></i>
+        <p class="title"> {{page.pageTitle}}</p>
+        <p class="date"> {{page.createdDate}}</p>
+
+
+      </div>
+      <hr>
+
+    </li>
+  </ul>
+
+</div>

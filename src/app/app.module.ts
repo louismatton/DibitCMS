@@ -12,8 +12,9 @@ import { UsersComponent } from './users/users.component';
 import { SettingsComponent } from './settings/settings.component';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './services/user.service';
-import {AuthGuard} from './guards/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { AuthenticationService } from './services/authentication.service';
+import { WebsiteService } from './services/website.service';
 
 
 @NgModule({
@@ -41,7 +42,7 @@ import { AuthenticationService } from './services/authentication.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserService, HttpClient, AuthGuard,AuthenticationService],
+  providers: [UserService, HttpClient, AuthGuard,AuthenticationService, WebsiteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -18,11 +18,25 @@
 * {
   font-family: EnzoMedi;
   scroll-behavior: smooth;
-  font-size: 14px;
+  font-size: 16px;
   margin: 0;
   padding: 0;
 }
 
 body {
   margin: 0;
+}
+
+.button{
+  border: 0.5px;
+  padding:5px;
+  padding-left:10px;
+  padding-right:10px;
+  color:white;
+  background-color: #16B1FE;
+font-size: 1.2rem;
+  border-radius: 5px;
+  i{
+    margin-right:10px;
+  }
 }

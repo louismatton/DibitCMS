@@ -1,0 +1,34 @@
+@import "../scss/colors",
+"../scss/mixins";
+
+.pages {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 60px;
+  .pagesheader {
+    display: flex;
+    #addPage {
+      color: white;
+    }
+  }
+  ul {
+    li {
+        .pageGroup{
+            i{
+                font-size:2em;
+                color: $darkGray;
+            }
+            display: flex;
+            margin-top:10px;
+            margin-bottom:10px;
+            .title{
+                left:20px;
+            }
+            .date{
+                left:130px;
+            }
+        }
+      list-style: none;
+    }
+  }
+}
