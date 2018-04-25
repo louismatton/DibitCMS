@@ -10,14 +10,14 @@
     <li *ngFor='let page of ownWebsite.pages'>
       <div class="pageGroup">
         <i class="fas fa-bars fa-5x"></i>
-        <p class="title"> {{page.pageTitle}}</p>
-        <p class="date"> {{page.createdDate}}</p>
+        <p class="title" > {{page.pageTitle}}</p>
+        <p class="date" >{{page.createdDate|date:'dd/MM/yyyy'}}</p>
 
+        <button class="button"><i class="fa fa-edit"></i>Edit</button>
+        <button class="button btnTrash"><i class="fa fa-trash-alt"></i></button>
 
       </div>
       <hr>
-
     </li>
   </ul>
-
 </div>

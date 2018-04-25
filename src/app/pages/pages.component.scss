@@ -1,6 +1,5 @@
 @import "../scss/colors",
 "../scss/mixins";
-
 .pages {
   width: 70%;
   margin: 0 auto;
@@ -13,21 +12,37 @@
   }
   ul {
     li {
-        .pageGroup{
-            i{
-                font-size:2em;
-                color: $darkGray;
-            }
-            display: flex;
-            margin-top:10px;
-            margin-bottom:10px;
-            .title{
-                left:20px;
-            }
-            .date{
-                left:130px;
-            }
+      .pageGroup>
+        //
+        i{
+          font-size: 2em;
+          color: $darkGray;
+      }
+      .pageGroup {
+        
+        p{
+          margin-right:20px;
+          margin-left:20px;
         }
+
+        display: flex;
+        margin-top:10px;
+        margin-bottom:10px;
+        .title {
+          max-width:400px;
+          left: 20px;
+        }
+        .date {
+          width:70px;
+          left: 130px;
+        }
+        .btn
+        .btnTrash{
+          margin-right:20px;
+          margin-left:auto;
+
+        }
+      }
       list-style: none;
     }
   }

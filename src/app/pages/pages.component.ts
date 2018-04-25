@@ -18,5 +18,9 @@ export class PagesComponent implements OnInit {
       this.ownWebsite = website;
     })
   }
+  formatDate = function(date){
+    var dateOut = new Date(date);
+    return dateOut;
+};
 
 }
