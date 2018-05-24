@@ -1,0 +1,34 @@
+<div class="pages"><h1>{{page.pageTitle}}</h1>
+
+  <div class="pagesheader">
+    <p>Laatst aangepast</p>
+    <button class="button" id="addPage">
+      <i class="fa fa-plus"></i> New post</button>
+  </div>
+
+  <hr>
+  <ul>
+    <li *ngFor='let post of page.posts'>
+      <div class="pageGroup">
+        <i class="fas fa-bars fa-5x"></i>
+        <p class="postTitle" id="title{{post.postOrder}}" class="show"> {{post.postTitle}}</p>
+        <!-- <input type="text" id="titletxt{{post.postOrder}}" [value]="username" (input)="username = $event.target.value"  class="editTitle none"> -->
+        <input type="text" name="title" id="titletxt{{post.postOrder}}" [(ngModel)]="post.postTitle" class="editTitle none">
+
+        <!-- <input type="text"  id="titletxt{{post.postOrder}}"  value="{{post.postTitle}}" class="editTitle none"> -->
+        <p class="date" >{{post.postDate|date:'dd/MM/yyyy'}}</p>
+        <!-- <a class="button btnEditPages1" href="/posts?pageorder={{page.pageOrder}}"><i class="fa fa-edit"></i>Edit</a> -->
+
+        <button class="button btnSave none" id="save{{post.postOrder}}" (click)="savePost(post)"><i class="far fa-save"></i>Save</button> 
+        <button class="button btnEditPages1" id="edit{{post.postOrder}}" (click)="editPost(post.postOrder)"><i class="fa fa-edit"></i>Edit</button> 
+
+        <!-- <button class="button btnEditPages1" (click)="editPost()"><i class="fa fa-edit"></i>Edit</button>  -->
+        <button class="button btnTrash"><i class="fa fa-trash-alt"></i></button>
+      </div>
+      <div id="text{{post.postOrder}}" class="none">
+        <textarea name="postText" id="textarea{{post.postOrder}}" class="textarea" [(ngModel)]="post.postText" rows="10"></textarea>
+      </div>
+      <hr>
+    </li>
+  </ul>
+</div>

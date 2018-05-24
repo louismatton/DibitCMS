@@ -15,7 +15,9 @@ import { UserService } from './services/user.service';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthenticationService } from './services/authentication.service';
 import { WebsiteService } from './services/website.service';
+import { PostsComponent } from './posts/posts.component';
 
+// import { CommonModule } from '@angular/common';  
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { WebsiteService } from './services/website.service';
     PagesComponent,
     UsersComponent,
     SettingsComponent,
-    LoginComponent
+    LoginComponent,
+    PostsComponent
+    // CommonModule
   ],
   imports: [
     BrowserModule,
@@ -35,6 +39,8 @@ import { WebsiteService } from './services/website.service';
       {path: 'pages', component: PagesComponent, canActivate: [AuthGuard] },
       {path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
       {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
+      {path: 'posts', component: PostsComponent, canActivate: [AuthGuard] },
+
       {path: '', redirectTo: 'dashboard', pathMatch: 'full', canActivate: [AuthGuard] },
       {path: '**', redirectTo: 'dashboard', pathMatch: 'full', canActivate: [AuthGuard] }
     ]

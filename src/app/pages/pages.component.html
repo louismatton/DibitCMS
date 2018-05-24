@@ -12,10 +12,10 @@
         <i class="fas fa-bars fa-5x"></i>
         <p class="title" > {{page.pageTitle}}</p>
         <p class="date" >{{page.createdDate|date:'dd/MM/yyyy'}}</p>
+        <a class="button btnEditPages1" href="/posts?pageorder={{page.pageOrder}}"><i class="fa fa-edit"></i>Edit</a>
 
-        <button class="button"><i class="fa fa-edit"></i>Edit</button>
+        <!-- <button class="button btnEditPages1" ng-click="editPage()"><i class="fa fa-edit"></i>Edit</button> -->
         <button class="button btnTrash"><i class="fa fa-trash-alt"></i></button>
-
       </div>
       <hr>
     </li>

@@ -22,5 +22,12 @@ export class PagesComponent implements OnInit {
     var dateOut = new Date(date);
     return dateOut;
 };
+//  visitPage =function(){
+//   Window.location='posts';
+// }
+// editPage = function (){
+//   // Location.path( '/new-page.html' );
+//   // location.href = '#/new-page.html';
+// };
 
 }

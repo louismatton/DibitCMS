@@ -1,26 +1,36 @@
 @import "../scss/colors",
 "../scss/mixins";
 .pages {
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
   margin-top: 60px;
   .pagesheader {
     display: flex;
+    line-height: 2;
+    margin-bottom:10px;
+    p{
+      margin-right:80px;
+      margin-left:auto;
+    }
+    .button{
+      margin-right:20px;
+    }
     #addPage {
       color: white;
     }
   }
   ul {
     li {
-      .pageGroup>
-        //
-        i{
+      .pageGroup>i{
           font-size: 2em;
           color: $darkGray;
+          margin-left:20px;
       }
+      
       .pageGroup {
-        
+        // line-height: 2;
         p{
+          margin-top:5px;
           margin-right:20px;
           margin-left:20px;
         }
@@ -33,13 +43,17 @@
           left: 20px;
         }
         .date {
-          width:70px;
-          left: 130px;
+          margin-right: 90px;
+          margin-left: auto;
         }
-        .btn
+        .btnEditPages1{
+          margin-right:20px;
+          // margin-left:auto;
+  
+        }
         .btnTrash{
           margin-right:20px;
-          margin-left:auto;
+          // margin-left:auto;
 
         }
       }

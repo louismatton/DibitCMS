@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import "app/scss/colors";
 
 @font-face {
   font-family: EnzoBold;
@@ -26,7 +27,35 @@
 body {
   margin: 0;
 }
+a{
+  color:inherit;
+  text-decoration: none;
+}
+.textarea{
+  font-family: EnzoLight;
+  border: 0.5px solid gray;
+  width: stretch;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  // color: white;
+  // background-color: #16B1FE;
+  font-size: 1.2rem;
+  border-radius: 5px;
+}
+input{
+  font-family: EnzoLight;
+  border: 0.5px solid gray;
+  // width: stretch;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  // color: white;
+  // background-color: #16B1FE;
+  font-size: 1.2rem;
+  border-radius: 5px;
 
+}
 .button {
   font-family: EnzoMedi;
   border: 0.5px;
@@ -34,7 +63,7 @@ body {
   padding-left: 10px;
   padding-right: 10px;
   color: white;
-  background-color: #16B1FE;
+  background-color: $clrBlue;
   font-size: 1.2rem;
   border-radius: 5px;
   i {
@@ -43,8 +72,14 @@ body {
 
 }
   .btnTrash{
-    background-color:red;
+    background-color:$clrRed;
     i{
       margin-right:0;
     }
+  }
+  .none{
+    display:none;
+  }
+  .show{
+    display:inherit;
   }
