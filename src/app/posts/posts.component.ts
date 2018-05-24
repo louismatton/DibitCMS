@@ -65,12 +65,39 @@ export class PostsComponent implements OnInit {
   savePost = function (post) {
     console.log("save");
 
-    // console.log(post);
-    // console.log(txt.ng);
-    // this.websiteService.editPost(post)
     this.websiteService.editPost(post, this.pageOrder);
-  }
 
+    let titletxt=document.getElementById("titletxt"+post.postOrder);
+    let title=document.getElementById("title"+post.postOrder);
+
+    let txt=document.getElementById("text"+post.postOrder);
+    let btnSave=document.getElementById("save"+post.postOrder);
+    let btnEdit=document.getElementById("edit"+post.postOrder);
+
+    titletxt.classList.remove("show");
+    titletxt.classList.add("none");
+    title.classList.remove("none");
+    title.classList.add("show");    
+    txt.classList.remove("show");
+    txt.classList.add("none");
+    btnSave.classList.add("none");
+    btnSave.classList.remove("show");
+    btnEdit.classList.add("show");
+    btnEdit.classList.remove("none");
+  }
+  deletePostTemp=function(postOrder){
+    let sure=document.getElementById('deleteDiv');
+    let postOrderInput=document.getElementById("hiddenPostOrder")
+    postOrderInput.setAttribute('value',postOrder);
+    sure.classList.add("show");
+    sure.classList.remove('none');
+  }
+  deletePost = function (postOrder) {
+    let li=document.getElementById("li"+postOrder);
+    li.style.display="none";
+
+    this.websiteService.deletePost(postOrder, this.pageOrder);
+  }
 
 }
 

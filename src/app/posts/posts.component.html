@@ -1,5 +1,17 @@
 <div class="pages"><h1>{{page.pageTitle}}</h1>
 
+  <div class="deleteDiv none" id="deleteDiv">
+    <p>
+          Ben je zeker dat je deze post wil verwijderen?
+
+    </p>
+    <div class="deleteDivBtn">
+      <input type="hidden" id="hiddenPostOrder">
+      <button class="button btnSave" id="save{{post.postOrder}}" (click)="savePost(post)"><i class="fa fa-trash-alt"></i>Verwijder</button> 
+      <button class="button btnCancel" id="save{{post.postOrder}}" (click)="savePost(post)"><i class="fas fa-ban"></i>Annuleer</button> 
+    </div>
+  </div>
+
   <div class="pagesheader">
     <p>Laatst aangepast</p>
     <button class="button" id="addPage">
@@ -8,7 +20,7 @@
 
   <hr>
   <ul>
-    <li *ngFor='let post of page.posts'>
+    <li *ngFor='let post of page.posts' id="li{{post.postOrder}}">
       <div class="pageGroup">
         <i class="fas fa-bars fa-5x"></i>
         <p class="postTitle" id="title{{post.postOrder}}" class="show"> {{post.postTitle}}</p>
@@ -23,7 +35,7 @@
         <button class="button btnEditPages1" id="edit{{post.postOrder}}" (click)="editPost(post.postOrder)"><i class="fa fa-edit"></i>Edit</button> 
 
         <!-- <button class="button btnEditPages1" (click)="editPost()"><i class="fa fa-edit"></i>Edit</button>  -->
-        <button class="button btnTrash"><i class="fa fa-trash-alt"></i></button>
+        <button class="button btnTrash" id="delete{{post.postOrder}}" (click)="deletePostTemp(post.postOrder)"><i class="fa fa-trash-alt"></i></button>
       </div>
       <div id="text{{post.postOrder}}" class="none">
         <textarea name="postText" id="textarea{{post.postOrder}}" class="textarea" [(ngModel)]="post.postText" rows="10"></textarea>
