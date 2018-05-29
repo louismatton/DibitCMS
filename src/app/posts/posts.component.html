@@ -7,8 +7,8 @@
     </p>
     <div class="deleteDivBtn">
       <input type="hidden" id="hiddenPostOrder">
-      <button class="button btnSave" id="save{{post.postOrder}}" (click)="savePost(post)"><i class="fa fa-trash-alt"></i>Verwijder</button> 
-      <button class="button btnCancel" id="save{{post.postOrder}}" (click)="savePost(post)"><i class="fas fa-ban"></i>Annuleer</button> 
+      <button class="button btnSave" id="delete" (click)="deletePost()"><i class="fa fa-trash-alt"></i>Verwijder</button> 
+      <button class="button btnCancel" id="cancel" (click)="cancelDelete()"><i class="fas fa-ban"></i>Annuleer</button> 
     </div>
   </div>
 

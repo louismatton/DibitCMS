@@ -92,11 +92,23 @@ export class PostsComponent implements OnInit {
     sure.classList.add("show");
     sure.classList.remove('none');
   }
-  deletePost = function (postOrder) {
-    let li=document.getElementById("li"+postOrder);
-    li.style.display="none";
+  cancelDelete = function(){
+    let sure=document.getElementById('deleteDiv');
+    // let postOrderInput=document.getElementById("hiddenPostOrder")
+    // postOrderInput.setAttribute('value',postOrder);
+    sure.classList.add("none");
+    sure.classList.remove('show');
 
-    this.websiteService.deletePost(postOrder, this.pageOrder);
+  }
+  deletePost = function () {
+    let postOrderInput=document.getElementById("hiddenPostOrder")
+    let input = postOrderInput.getAttribute("value");
+    console.log(input);
+    let li=document.getElementById("li"+input);
+    li.style.display="none";
+    this.cancelDelete();
+
+    this.websiteService.deletePost(input, this.pageOrder);
   }
 
 }
