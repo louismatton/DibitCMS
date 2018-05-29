@@ -22,12 +22,21 @@ export class PagesComponent implements OnInit {
     var dateOut = new Date(date);
     return dateOut;
 };
-//  visitPage =function(){
-//   Window.location='posts';
-// }
-// editPage = function (){
-//   // Location.path( '/new-page.html' );
-//   // location.href = '#/new-page.html';
-// };
+
+  addPageTemp= function(){
+    let sure=document.getElementById('addDiv');
+    sure.classList.add("show");
+    sure.classList.remove('none');
+  }
+
+  addPage = function () {
+    let sure=document.getElementById('addDiv');
+    let txtTitle=((document.getElementById("txtPageTitle") as HTMLInputElement).value);
+
+    sure.classList.add("none");
+    sure.classList.remove('show');
+
+    this.websiteService.addPage(txtTitle);
+  }
 
 }

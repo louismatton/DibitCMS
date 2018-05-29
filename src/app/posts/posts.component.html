@@ -1,20 +1,69 @@
-<div class="pages"><h1>{{page.pageTitle}}</h1>
+<div class="pages">
+  <h1>{{page.pageTitle}}</h1>
 
-  <div class="deleteDiv none" id="deleteDiv">
-    <p>
-          Ben je zeker dat je deze post wil verwijderen?
+  <div class="confirmationpopup deleteDiv none" id="deleteDiv">
+    <div>
+      <p>
+        Are you sure you want to remove this post?
 
-    </p>
-    <div class="deleteDivBtn">
-      <input type="hidden" id="hiddenPostOrder">
-      <button class="button btnSave" id="delete" (click)="deletePost()"><i class="fa fa-trash-alt"></i>Verwijder</button> 
-      <button class="button btnCancel" id="cancel" (click)="cancelDelete()"><i class="fas fa-ban"></i>Annuleer</button> 
+      </p>
+      <div class="deleteDivBtn">
+        <input type="hidden" id="hiddenPostOrder">
+        <button class="button btnSave" id="delete" (click)="deletePost()">
+          <i class="fa fa-trash-alt"></i>Remove</button>
+        <button class="button btnCancel" id="cancel" (click)="cancelDelete()">
+          <i class="fas fa-ban"></i>Cancel</button>
+      </div>
+
+
     </div>
   </div>
 
+  <div class="confirmationpopup addDiv none" id="addDiv">
+    <div>
+      <h2>Add Post</h2>
+      <div class="inputs">
+        <input type="radio" name="typePost" checked value="text" id="text">
+        <label for="text">text only</label>
+        <br>
+        <input type="radio" name="typePost" disabled value="text" id="text">
+        <label for="text">text and image</label>
+        <br>
+        <input type="radio" name="typePost" disabled value="text" id="text">
+        <label for="text">text and slider</label>
+        <br>
+        <input type="radio" name="typePost" disabled value="text" id="text">
+        <label for="text">slider only</label>
+      </div>
+      <div class="divButtons">
+        <button class="button btnSave" id="addPost" (click)="addPost()">
+          <i class="fa fa-plus"></i>add</button>
+        <button class="button btnCancel" id="cancel" (click)="cancelAddPost()">
+          <i class="fas fa-ban"></i>Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="confirmationpopup addDiv none" id="addDivText">
+    <div>
+      <h2>Add Post</h2>
+      <div class="options">
+        <input type="text" class="text" name="typePost" placeholder="title" id="addText">
+        <textarea name="postText" id="addTextarea" class="textarea" placeholder="text" rows="10"></textarea>
+      </div>
+      <div class="divButtons">
+        <button class="button btnSave" id="addPost" (click)="addPostDef()">
+          <i class="fa fa-plus"></i>add</button>
+        <button class="button btnCancel" id="cancel" (click)="cancelAddTextPost()">
+
+          <i class="fas fa-ban"></i>Cancel</button>
+      </div>
+
+    </div>
+  </div>
   <div class="pagesheader">
-    <p>Laatst aangepast</p>
-    <button class="button" id="addPage">
+    <p>Last edited</p>
+    <button class="button" id="addPost" (click)="addPostTemp()">
       <i class="fa fa-plus"></i> New post</button>
   </div>
 
@@ -28,14 +77,18 @@
         <input type="text" name="title" id="titletxt{{post.postOrder}}" [(ngModel)]="post.postTitle" class="editTitle none">
 
         <!-- <input type="text"  id="titletxt{{post.postOrder}}"  value="{{post.postTitle}}" class="editTitle none"> -->
-        <p class="date" >{{post.postDate|date:'dd/MM/yyyy'}}</p>
+        <p class="date">{{post.postDate|date:'dd/MM/yyyy'}}</p>
         <!-- <a class="button btnEditPages1" href="/posts?pageorder={{page.pageOrder}}"><i class="fa fa-edit"></i>Edit</a> -->
 
-        <button class="button btnSave none" id="save{{post.postOrder}}" (click)="savePost(post)"><i class="far fa-save"></i>Save</button> 
-        <button class="button btnEditPages1" id="edit{{post.postOrder}}" (click)="editPost(post.postOrder)"><i class="fa fa-edit"></i>Edit</button> 
+        <button class="button btnSave none" id="save{{post.postOrder}}" (click)="savePost(post)">
+          <i class="far fa-save"></i>Save</button>
+        <button class="button btnEditPages1" id="edit{{post.postOrder}}" (click)="editPost(post.postOrder)">
+          <i class="fa fa-edit"></i>Edit</button>
 
         <!-- <button class="button btnEditPages1" (click)="editPost()"><i class="fa fa-edit"></i>Edit</button>  -->
-        <button class="button btnTrash" id="delete{{post.postOrder}}" (click)="deletePostTemp(post.postOrder)"><i class="fa fa-trash-alt"></i></button>
+        <button class="button btnTrash" id="delete{{post.postOrder}}" (click)="deletePostTemp(post.postOrder)">
+          <i class="fa fa-trash-alt"></i>
+        </button>
       </div>
       <div id="text{{post.postOrder}}" class="none">
         <textarea name="postText" id="textarea{{post.postOrder}}" class="textarea" [(ngModel)]="post.postText" rows="10"></textarea>

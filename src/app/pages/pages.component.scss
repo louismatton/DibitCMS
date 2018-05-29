@@ -9,7 +9,7 @@
     line-height: 2;
     margin-bottom:10px;
     p{
-      margin-right:80px;
+      margin-right:100px;
       margin-left:auto;
     }
     .button{
@@ -58,6 +58,25 @@
         }
       }
       list-style: none;
+    }
+  }
+  .addDiv {
+    width: 500px;
+    
+    margin-left: 15vw;
+    
+    height: 250px;
+    text-align: center;
+    .text {
+      margin-bottom: 20px;
+      margin-top:20px;
+    }
+    // border-radius: 30px;
+    // -webkit-box-shadow: 7px 7px 53px -13px #484848;
+    // box-shadow: 7px 7px 53px -13px #484848;
+    p {
+      font-size: 1.9em;
+      padding-top: 50px;
     }
   }
 }

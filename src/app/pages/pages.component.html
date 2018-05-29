@@ -1,7 +1,22 @@
 <div class="pages">
+
+  <div class="confirmationpopup addDiv none" id="addDiv">
+    <div>
+      <h2>Add Page</h2>
+        <input type="text" placeholder="title" class="text" id="txtPageTitle">
+
+      <div class="buttons">
+        <button class="button btnSave" id="addPage" (click)="addPage()">
+          <i class="far fa-save"></i>Add</button>
+        <button class="button btnCancel" id="cancel" (click)="cancelAdd()">
+          <i class="fas fa-ban"></i>Cancel</button>
+      </div>
+    </div>
+  </div>
+
   <div class="pagesheader">
-    <p>Laatst aangepast</p>
-    <button class="button" id="addPage">
+    <p>Last edited</p>
+    <button class="button" id="addPage" (click)="addPageTemp()">
       <i class="fa fa-plus"></i> New page</button>
   </div>
 
@@ -10,12 +25,15 @@
     <li *ngFor='let page of ownWebsite.pages'>
       <div class="pageGroup">
         <i class="fas fa-bars fa-5x"></i>
-        <p class="title" > {{page.pageTitle}}</p>
-        <p class="date" >{{page.createdDate|date:'dd/MM/yyyy'}}</p>
-        <a class="button btnEditPages1" href="/posts?pageorder={{page.pageOrder}}"><i class="fa fa-edit"></i>Edit</a>
+        <p class="title"> {{page.pageTitle}}</p>
+        <p class="date">{{page.createdDate|date:'dd/MM/yyyy'}}</p>
+        <a class="button btnEditPages1" href="/posts?pageorder={{page.pageOrder}}">
+          <i class="fa fa-edit"></i>Edit</a>
 
         <!-- <button class="button btnEditPages1" ng-click="editPage()"><i class="fa fa-edit"></i>Edit</button> -->
-        <button class="button btnTrash"><i class="fa fa-trash-alt"></i></button>
+        <button class="button btnTrash">
+          <i class="fa fa-trash-alt"></i>
+        </button>
       </div>
       <hr>
     </li>

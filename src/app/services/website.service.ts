@@ -38,33 +38,54 @@ export class WebsiteService {
         //Maps the response object sent from the server
         // console.log(res);
         return res as Website;
-
       });
   }
-      
-  editPost(post, pageOrder):void{
-    post.pageOrder=Number(pageOrder);
-  
-      this.http.post(this.websiteUrl+'/editpost', post ,this.requestOptions)
+
+  editPost(post, pageOrder): void {
+    post.pageOrder = Number(pageOrder);
+
+    this.http.post(this.websiteUrl + '/editpost', post, this.requestOptions)
       .subscribe(res => {
         console.log("done", res);
         // return res as Website;
       });
+  }
+  addPost(txtTitle, txtTxt, pageOrder): void {
+    var post = {
+      "postTitle": txtTitle,
+      "postText": txtTxt,
+      "pageOrder": pageOrder
     }
-    deletePost(postOrder, pageOrder):void{
-      var req={
-        "postOrder":postOrder,
-        "pageOrder":pageOrder
-      }
+    this.http.post(this.websiteUrl + '/addpost', post, this.requestOptions)
+      .subscribe(res => {
+        console.log("done", res);
+        // return res as Website;
+      });
+  }
+  addPage(pageTitle): void {
+    var post = {
+      "pageTitle": pageTitle
+    }
+    this.http.post(this.websiteUrl + '/addpage', post, this.requestOptions)
+      .subscribe(res => {
+        console.log("done", res);
+        // return res as Website;
+      });
+  }
+  deletePost(postOrder, pageOrder): void {
+    var req = {
+      "postOrder": postOrder,
+      "pageOrder": pageOrder
+    }
 
-      // post.pageOrder=Number(pageOrder);
-    
-        this.http.post(this.websiteUrl+'/deletepost', req ,this.requestOptions)
-        .subscribe(res => {
-          console.log("done", res);
-          // return res as Website;
-        });
-      }
+    // post.pageOrder=Number(pageOrder);
+
+    this.http.post(this.websiteUrl + '/deletepost', req, this.requestOptions)
+      .subscribe(res => {
+        console.log("done", res);
+        // return res as Website;
+      });
+  }
 
   getWebsiteById(id: String): Observable < Website > {
     let getUrl = `${this.websiteUrl}`
@@ -95,3 +116,4 @@ export class WebsiteService {
     return Promise.reject(error.message || error);
   }
 }
+

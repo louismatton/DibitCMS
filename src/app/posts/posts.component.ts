@@ -110,6 +110,61 @@ export class PostsComponent implements OnInit {
 
     this.websiteService.deletePost(input, this.pageOrder);
   }
+  addPostTemp=function(){
+    let sure=document.getElementById('addDiv');
+    // let postOrderInput=document.getElementById("hiddenPostOrder")
+    // postOrderInput.setAttribute('value',postOrder);
+    sure.classList.add("show");
+    sure.classList.remove('none');
+  }
+  cancelAddPost = function(){
+    let sure=document.getElementById('addDiv');
+    // let postOrderInput=document.getElementById("hiddenPostOrder")
+    // postOrderInput.setAttribute('value',postOrder);
+    sure.classList.add("none");
+    sure.classList.remove('show');
 
+  }
+  cancelAddTextPost = function(){
+    let sure=document.getElementById('addDivText');
+    // let postOrderInput=document.getElementById("hiddenPostOrder")
+    // postOrderInput.setAttribute('value',postOrder);
+    sure.classList.add("none");
+    sure.classList.remove('show');
+
+  }
+  addPost = function () {
+    let sure=document.getElementById('addDivText');
+    // let postOrderInput=document.getElementById("hiddenPostOrder")
+    // postOrderInput.setAttribute('value',postOrder);
+    sure.classList.add("show");
+    sure.classList.remove('none');
+    this.cancelAddPost();
+
+    // this.websiteService.deletePost(input, this.pageOrder);
+  }
+
+  addPostDef = function () {
+    console.log("sup");
+    let txtTitle=((document.getElementById("addText") as HTMLInputElement).value);
+    let txtTxt=((document.getElementById("addTextarea") as HTMLInputElement).value);
+    console.log(txtTitle, txtTxt);
+    
+    // li.style.display="none";
+    // this.cancelDelete();
+    this.cancelAddTextPost();
+    this.websiteService.addPost(txtTitle, txtTxt, this.pageOrder)
+      .subscribe(website => {
+        // console.log(website);
+        this.ownWebsite = website;
+        for (let page of this.ownWebsite.pages) {
+          if (page.pageOrder == this.pageOrder) {
+            // console.log('juist');
+            // console.log(page);
+            this.page = page;
+        }
+      }
+    });
+  }
 }
 
