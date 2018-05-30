@@ -38,5 +38,38 @@ export class PagesComponent implements OnInit {
 
     this.websiteService.addPage(txtTitle);
   }
+  deletePageTemp=function(postOrder){
+    let sure=document.getElementById('deleteDiv');
+    let postOrderInput=document.getElementById("hiddenPageOrder")
+    postOrderInput.setAttribute('value',postOrder);
+    sure.classList.add("show");
+    sure.classList.remove('none');
+  }
+  cancelDelete = function(){
+    let sure=document.getElementById('deleteDiv');
+    // let postOrderInput=document.getElementById("hiddenPostOrder")
+    // postOrderInput.setAttribute('value',postOrder);
+    sure.classList.add("none");
+    sure.classList.remove('show');
+
+  }
+  deletePage = function () {
+    let postOrderInput=document.getElementById("hiddenPageOrder")
+    let input = postOrderInput.getAttribute("value");
+    console.log(input);
+    let li=document.getElementById("li"+input);
+    li.style.display="none";
+    this.cancelDelete();
+
+    this.websiteService.deletePage(input);
+  }
+  cancelAdd = function(){
+    let sure=document.getElementById('addDiv');
+    // let postOrderInput=document.getElementById("hiddenPostOrder")
+    // postOrderInput.setAttribute('value',postOrder);
+    sure.classList.add("none");
+    sure.classList.remove('show');
+
+  }
 
 }

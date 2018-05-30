@@ -86,6 +86,17 @@ export class WebsiteService {
         // return res as Website;
       });
   }
+  deletePage(pageOrder): void {
+    var req = {
+      "pageOrder": pageOrder
+    }
+    
+    this.http.post(this.websiteUrl + '/deletepage', req, this.requestOptions)
+      .subscribe(res => {
+        console.log("done", res);
+        // return res as Website;
+      });
+  }
 
   getWebsiteById(id: String): Observable < Website > {
     let getUrl = `${this.websiteUrl}`

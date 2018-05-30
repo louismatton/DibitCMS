@@ -111,17 +111,12 @@ input {
   position: absolute;
   margin-left: 1vw;
   background-color: white;
-  // margin: 0 auto;
-  // z-index: 9999999999999999999999999999999;
   height: 600px;
-  // text-align: center;
   border-radius: 30px;
   -webkit-box-shadow: 7px 7px 53px -13px #484848;
   box-shadow: 7px 7px 53px -13px #484848;
   h2 {
     font-size: 1.9em;
-    // padding-top: 30px;
-    // padding-left:30px;
   }
   .button{
     margin-top: 30px;
@@ -131,5 +126,15 @@ input {
     position: absolute;
     bottom: 30px;
     right: 30px;
+  }
+}
+.deleteDiv {
+  width: 500px;
+  margin-left: 15vw;
+  height: 250px;
+  text-align: center;
+  p {
+    font-size: 1.9em;
+    padding-top: 50px;
   }
 }

@@ -14,6 +14,22 @@
     </div>
   </div>
 
+  <div class="confirmationpopup deleteDiv none" id="deleteDiv">
+    <div>
+      <p>
+        Are you sure you want to remove this page?
+      </p>
+      <div class="deleteDivBtn">
+        <input type="hidden" id="hiddenPageOrder">
+        <button class="button btnSave" id="delete" (click)="deletePage()">
+          <i class="fa fa-trash-alt"></i>Remove</button>
+        <button class="button btnCancel" id="cancel" (click)="cancelDelete()">
+          <i class="fas fa-ban"></i>Cancel</button>
+      </div>
+
+    </div>
+  </div>
+
   <div class="pagesheader">
     <p>Last edited</p>
     <button class="button" id="addPage" (click)="addPageTemp()">
@@ -22,7 +38,7 @@
 
   <hr>
   <ul>
-    <li *ngFor='let page of ownWebsite.pages'>
+    <li *ngFor='let page of ownWebsite.pages'  id="li{{page.pageOrder}}">
       <div class="pageGroup">
         <i class="fas fa-bars fa-5x"></i>
         <p class="title"> {{page.pageTitle}}</p>
@@ -31,7 +47,7 @@
           <i class="fa fa-edit"></i>Edit</a>
 
         <!-- <button class="button btnEditPages1" ng-click="editPage()"><i class="fa fa-edit"></i>Edit</button> -->
-        <button class="button btnTrash">
+        <button class="button btnTrash" id="delete{{page.postOrder}}" (click)="deletePageTemp(page.pageOrder)">
           <i class="fa fa-trash-alt"></i>
         </button>
       </div>
