@@ -21,23 +21,6 @@ export class DashboardComponent implements OnInit {
     };
     console.log((this.authdataraw.token));
 
-    this.http.get('http://localhost:3000/tasks', requestOptions)
-      .map(res => {
-        //Maps the response object sent from the server
-        // console.log(res);
-        // console.log(res);
-      }).subscribe(tasks => {
-        // console.log(tasks);
-      });
-    this.http.get('http://localhost:3000/owntasks', requestOptions)
-      .map(res => {
-        //Maps the response object sent from the server
-        // console.log(res);
-        // console.log(res);
-      }).subscribe(tasks => {
-        // console.log(tasks);
-      });
-
     this.http.get('http://localhost:3000/users', requestOptions)
       .map(res => {
         //Maps the response object sent from the server

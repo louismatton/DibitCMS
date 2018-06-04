@@ -1,0 +1,84 @@
+@import "../scss/colors",
+"../scss/mixins";
+.pages {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 60px;
+  .pagesheader {
+    display: flex;
+    line-height: 2;
+    margin-bottom: 10px;
+    p {
+      margin-right: 100px;
+      margin-left: auto;
+    }
+    .button {
+      margin-right: 20px;
+    }
+    #addPage {
+      color: white;
+    }
+  }
+  ul {
+    li {
+      .pageGroup>i {
+        font-size: 2em;
+        color: $darkGray;
+        margin-left: 20px;
+      }
+      .pageGroup {
+        // line-height: 2;
+        p {
+          margin-top: 5px;
+          margin-right: 20px;
+          margin-left: 20px;
+        }
+        display: flex;
+        margin-top:10px;
+        margin-bottom:10px;
+        .title {
+          max-width: 400px;
+          left: 20px;
+        }
+        .editTitle {
+          margin-left: 20px;
+        }
+        .date {
+          margin-right: 90px;
+          margin-left: auto;
+        }
+        .btnEditPages1 {
+          margin-right: 20px; // margin-left:auto;
+        }
+        .btnSave {
+          background-color: $clrGreen;
+          margin-right: 20px;
+          i {
+            font-size: 1em;
+          }
+        }
+        .btnTrash {
+          margin-right: 20px; // margin-left:auto;
+        }
+      }
+      list-style: none;
+    }
+    div {
+      .textarea {
+        margin-right: 20px;
+        margin-left: 20px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+  .options {
+    padding-top: 30px;
+    .text {
+      margin-bottom: 20px;
+    }
+    .textarea {
+      height: 330px;
+    }
+  }
+
+}

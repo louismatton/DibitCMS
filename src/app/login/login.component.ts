@@ -38,21 +38,4 @@ export class LoginComponent implements OnInit {
             });
 }
 
-  // login() {
-  //   console.log(this.loginData);
-  //   this.http.post('http://localhost:3000/login', this.loginData)
-  //     .subscribe(
-  //       resp => {
-  //         this.data = resp;
-  //         console.log(this.loginData, this.data);
-  //         // sessionStorage.setItem('Authorization', JSON.stringify(this.data));
-  //         localStorage.setItem('Authorization', JSON.stringify(this.data));
-
-  //         this.router.navigate(['dashboard']);
-  //       }, err => {
-  //         this.message = err.error.msg;
-  //       });
-  // }
-
-
 }
