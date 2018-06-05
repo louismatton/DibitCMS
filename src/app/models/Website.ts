@@ -6,6 +6,7 @@ export class Website {
     pageTitle: String,
     createdDate: Date,
     pageOrder: Number,
+    pageVisible:Boolean,
     posts: {
       postTitle: String,
       postText: String,
@@ -14,7 +15,8 @@ export class Website {
       }[],
       postType: String,
       postDate: Date,
-      postOrder: Number
+      postOrder: Number,
+      postVisible:Boolean
     }[];
   }[];
 

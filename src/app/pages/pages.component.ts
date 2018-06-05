@@ -71,5 +71,17 @@ export class PagesComponent implements OnInit {
     sure.classList.remove('show');
 
   }
+  pageVisible=function(input){
+    console.log(input);
+    let sure=document.getElementById('vis'+input);
+    if(sure.classList.contains("true")){
+      sure.classList.add("false")
+      sure.classList.remove("true")
+    }else{
+      sure.classList.add("true")
+      sure.classList.remove("false")      
+    }
+    this.websiteService.editvisibilityPage(input);
+  }
 
 }

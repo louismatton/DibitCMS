@@ -41,7 +41,12 @@
     <li *ngFor='let page of ownWebsite.pages'  id="li{{page.pageOrder}}">
       <div class="pageGroup">
         <i class="fas fa-bars fa-5x"></i>
+        
         <p class="title"> {{page.pageTitle}}</p>
+        <a class="{{page.pageVisible}}" id="vis{{page.pageOrder}}" (click)="pageVisible(page.pageOrder)">
+          <i class="fas fa-eye"></i>
+        </a>
+
         <p class="date">{{page.createdDate|date:'dd/MM/yyyy'}}</p>
         <a class="button btnEditPages1" href="/posts?pageorder={{page.pageOrder}}">
           <i class="fa fa-edit"></i>Edit</a>

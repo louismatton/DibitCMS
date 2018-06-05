@@ -40,6 +40,8 @@ export class PostsComponent implements OnInit {
   };
   editPost = function (postOrder) {
     // console.log(postOrder);
+    let edit=document.getElementById('vis'+postOrder);
+
     let titletxt=document.getElementById("titletxt"+postOrder);
     let title=document.getElementById("title"+postOrder);
 
@@ -47,6 +49,7 @@ export class PostsComponent implements OnInit {
     let btnSave=document.getElementById("save"+postOrder);
     let btnEdit=document.getElementById("edit"+postOrder);
 
+    edit.classList.add("none");
     titletxt.classList.remove("none");
     titletxt.classList.add("show");
     title.classList.remove("show");
@@ -73,7 +76,10 @@ export class PostsComponent implements OnInit {
     let txt=document.getElementById("text"+post.postOrder);
     let btnSave=document.getElementById("save"+post.postOrder);
     let btnEdit=document.getElementById("edit"+post.postOrder);
+    let edit=document.getElementById('vis'+post.postOrder);
 
+    edit.classList.add("show");
+  
     titletxt.classList.remove("show");
     titletxt.classList.add("none");
     title.classList.remove("none");
@@ -166,5 +172,20 @@ export class PostsComponent implements OnInit {
       }
     });
   }
+  
+  postVisible=function(input){
+    console.log(input);
+    let sure=document.getElementById('vis'+input);
+    if(sure.classList.contains("true")){
+      sure.classList.add("false")
+      sure.classList.remove("true")
+    }else{
+      sure.classList.add("true")
+      sure.classList.remove("false")      
+    }
+    console.log(this.pageOrder);
+    this.websiteService.editvisibilityPost(this.pageOrder,input);
+  }
+
 }
 

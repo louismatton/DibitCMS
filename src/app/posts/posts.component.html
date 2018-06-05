@@ -73,6 +73,12 @@
       <div class="pageGroup">
         <i class="fas fa-bars fa-5x"></i>
         <p class="postTitle" id="title{{post.postOrder}}" class="show"> {{post.postTitle}}</p>
+
+        <a class="{{post.postVisible}}" id="vis{{post.postOrder}}" (click)="postVisible(post.postOrder)">
+          <i class="fas fa-eye"></i>
+        </a>
+
+
         <!-- <input type="text" id="titletxt{{post.postOrder}}" [value]="username" (input)="username = $event.target.value"  class="editTitle none"> -->
         <input type="text" name="title" id="titletxt{{post.postOrder}}" [(ngModel)]="post.postTitle" class="editTitle none">
 

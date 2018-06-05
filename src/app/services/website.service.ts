@@ -97,6 +97,33 @@ export class WebsiteService {
         // return res as Website;
       });
   }
+  editvisibilityPage(pageOrder): void {
+    // post.pageOrder = Number(pageOrder);
+    var req = {
+      "pageOrder": pageOrder
+    }
+
+    this.http.post(this.websiteUrl + '/visPage', req, this.requestOptions)
+      .subscribe(res => {
+        console.log("done", res);
+        // return res as Website;
+      });
+  }
+  // this.websiteService.editvisibilityPost(this.postOrder,input);
+
+  editvisibilityPost(pageOrder, postOrder): void {
+    // post.pageOrder = Number(pageOrder);
+    var req = {
+      "pageOrder": pageOrder,
+      "postOrder":postOrder
+    }
+
+    this.http.post(this.websiteUrl + '/visPost', req, this.requestOptions)
+      .subscribe(res => {
+        console.log("done", res);
+        // return res as Website;
+      });
+  }
 
   getWebsiteById(id: String): Observable < Website > {
     let getUrl = `${this.websiteUrl}`
@@ -108,12 +135,7 @@ export class WebsiteService {
       })
   }
 
-  editWebsite(website: Website) {
-    let editUrl = `${this.api_url}/website/${website._id}/${website.title}`;
-    console.log(editUrl);
-    // console.log(JSON.stringify(website));
-    return this.http.put(editUrl, "");
-  }
+
 
   editWebsiteStatus(id: String, status: Number) {
     let editUrl = `${this.websiteUrl}/status/${id}/${status}`;

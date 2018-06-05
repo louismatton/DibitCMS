@@ -33,6 +33,16 @@
           margin-right: 20px;
           margin-left: 20px;
         }
+        .true i{
+          color:$darkGray;
+          cursor: pointer;
+          padding-top:8px;
+        }
+        .false i{
+          cursor: pointer;
+          padding-top:8px;
+          color:$lightGray;
+        }
         display: flex;
         margin-top:10px;
         margin-bottom:10px;
