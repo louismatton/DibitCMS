@@ -50,6 +50,7 @@ export class WebsiteService {
         // return res as Website;
       });
   }
+
   addPost(txtTitle, txtTxt, pageOrder): void {
     var post = {
       "postTitle": txtTitle,
@@ -62,6 +63,22 @@ export class WebsiteService {
         // return res as Website;
       });
   }
+  addPostWithImage(txtTitle, txtTxt,arrimages, pageOrder): void {
+    var post = {
+      "postTitle": txtTitle,
+      "postText": txtTxt,
+      "pageOrder": pageOrder,
+      "postPhotos": arrimages
+    }
+    console.log(post);
+    this.http.post(this.websiteUrl + '/addpost', post, this.requestOptions)
+      .subscribe(res => {
+        console.log("done", res);
+        // return res as Website;
+      });
+  }
+
+
   addPage(pageTitle): void {
     var post = {
       "pageTitle": pageTitle
@@ -90,7 +107,7 @@ export class WebsiteService {
     var req = {
       "pageOrder": pageOrder
     }
-    
+
     this.http.post(this.websiteUrl + '/deletepage', req, this.requestOptions)
       .subscribe(res => {
         console.log("done", res);
@@ -115,7 +132,7 @@ export class WebsiteService {
     // post.pageOrder = Number(pageOrder);
     var req = {
       "pageOrder": pageOrder,
-      "postOrder":postOrder
+      "postOrder": postOrder
     }
 
     this.http.post(this.websiteUrl + '/visPost', req, this.requestOptions)
@@ -134,8 +151,6 @@ export class WebsiteService {
         return res as Website;
       })
   }
-
-
 
   editWebsiteStatus(id: String, status: Number) {
     let editUrl = `${this.websiteUrl}/status/${id}/${status}`;

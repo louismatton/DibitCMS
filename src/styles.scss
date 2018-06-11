@@ -63,11 +63,13 @@ input {
 }
 
 .button {
+  cursor: pointer;
   font-family: EnzoMedi;
   border: 0.5px;
   padding: 5px;
   padding-left: 10px;
   padding-right: 10px;
+  margin-right:20px;
   color: white;
   background-color: $clrBlue;
   font-size: 1.2rem;
@@ -75,6 +77,11 @@ input {
   i {
     margin-right: 10px;
   }
+
+}
+.button:disabled{
+  cursor: default;
+  background-color:$lightGray;
 }
 
 .btnTrash {

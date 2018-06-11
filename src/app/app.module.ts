@@ -16,7 +16,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { AuthenticationService } from './services/authentication.service';
 import { WebsiteService } from './services/website.service';
 import { PostsComponent } from './posts/posts.component';
-
+import { Ng2ImgMaxModule } from 'ng2-img-max';
 // import { CommonModule } from '@angular/common';  
 
 @NgModule({
@@ -32,6 +32,7 @@ import { PostsComponent } from './posts/posts.component';
   ],
   imports: [
     BrowserModule,
+    Ng2ImgMaxModule,
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
 

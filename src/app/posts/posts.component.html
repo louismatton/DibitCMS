@@ -5,7 +5,6 @@
     <div>
       <p>
         Are you sure you want to remove this post?
-
       </p>
       <div class="deleteDivBtn">
         <input type="hidden" id="hiddenPostOrder">
@@ -23,22 +22,29 @@
     <div>
       <h2>Add Post</h2>
       <div class="inputs">
-        <input type="radio" name="typePost" checked value="text" id="text">
-        <label for="text">text only</label>
-        <br>
-        <input type="radio" name="typePost" disabled value="text" id="text">
-        <label for="text">text and image</label>
-        <br>
-        <input type="radio" name="typePost" disabled value="text" id="text">
-        <label for="text">text and slider</label>
-        <br>
-        <input type="radio" name="typePost" disabled value="text" id="text">
-        <label for="text">slider only</label>
+        <div class="option" (click)='showAddPost("addDivText")'>
+          <h4>Text only</h4>
+          <i class="far fa-file-alt"></i>
+        </div>
+        <div class="option" (click)='showAddPost("addDivTextAndImage")'>
+          <h4>Text and image</h4>
+          <i class="far fa-file-alt"></i>
+          <i class="far fa-image"></i>
+        </div>
+        <div class="option" (click)='showAddPost("addDivTextAndMultipleImages")'>
+          <h4>Text and multiple images</h4>
+          <i class="far fa-file-alt"></i>
+          <i class="far fa-images"></i>
+        </div>
+        <div class="option">
+          <h4>Multiple images</h4>
+          <i class="far fa-images"></i>
+        </div>
       </div>
       <div class="divButtons">
-        <button class="button btnSave" id="addPost" (click)="addPost()">
-          <i class="fa fa-plus"></i>add</button>
-        <button class="button btnCancel" id="cancel" (click)="cancelAddPost()">
+        <!-- <button class="button btnSave" id="addPost" (click)="addPostTextOnly()">
+          <i class="fa fa-plus"></i>add</button> -->
+        <button class="button btnCancel" id="cancel" (click)="cancelAddPost('addDiv')">
           <i class="fas fa-ban"></i>Cancel</button>
       </div>
     </div>
@@ -54,13 +60,66 @@
       <div class="divButtons">
         <button class="button btnSave" id="addPost" (click)="addPostDef()">
           <i class="fa fa-plus"></i>add</button>
-        <button class="button btnCancel" id="cancel" (click)="cancelAddTextPost()">
+        <button class="button btnCancel" id="cancel" (click)="cancelAddPost('addDivText')">
 
           <i class="fas fa-ban"></i>Cancel</button>
       </div>
 
     </div>
   </div>
+
+  <div class="confirmationpopup addDiv none" id="addDivTextAndImage">
+    <div>
+      <h2>Add Post</h2>
+      <div class="options">
+        <input type="text" class="text" name="typePost" placeholder="title" id="addText1">
+        <textarea name="postText" id="addTextarea1" class="textarea" placeholder="text" rows="10"></textarea>
+      </div>
+      <div class="divButtons">
+        <img class="" alt="" id="imageUpload">
+        <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput accept="image/x-png,image/gif,image/jpeg">
+        <button id="btnUploadTextAndImage" class="button" (click)="fileInput.click()">
+          <i class="fa fa-plus"></i>Select image</button>
+
+        <button class="button btnSave" id="addPostTextAndImage" (click)="addPostTextAndImageDef()" disabled>
+          <i class="fa fa-plus"></i>add</button>
+        <button class="button btnCancel" id="cancel" (click)="cancelAddPost('addDivTextAndImage')">
+
+          <i class="fas fa-ban"></i>Cancel</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="confirmationpopup addDiv none" id="addDivTextAndMultipleImages">
+    <div>
+      <h2>Add Post</h2>
+      <div class="options">
+        <input type="text" class="text" name="typePost" placeholder="title" id="addText1">
+        <textarea name="postText" id="addTextarea1" class="textarea" placeholder="text" rows="10"></textarea>
+      </div>
+      <div class="divButtons">
+
+        <div id="TextAndMultipleImagesDiv">
+          <!-- hier komen fotos -->
+          
+        </div>
+
+        <input style="display: none" type="file" (change)="onFileChangedMultipleImages($event)" #fileInputTextAndMultipleImages accept="image/x-png,image/gif,image/jpeg"
+          multiple>
+        <button id="btnUploadTextAndMultipleImages" class="button" (click)="fileInputTextAndMultipleImages.click()">
+          <i class="fa fa-plus"></i>Select image</button>
+
+        <button class="button btnSave" id="addPostTextAndMultipleImages" (click)="addPostTextAndMultipleImagesDef()" disabled>
+          <i class="fa fa-plus"></i>add</button>
+        <button class="button btnCancel" id="cancel" (click)="cancelAddPost('addDivTextAndMultipleImages')">
+
+          <i class="fas fa-ban"></i>Cancel</button>
+      </div>
+
+    </div>
+  </div>
+
   <div class="pagesheader">
     <p>Last edited</p>
     <button class="button" id="addPost" (click)="addPostTemp()">

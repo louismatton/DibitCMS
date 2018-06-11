@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WebsiteService } from '../services/website.service';
 import Website from '../models/Website';
 import { ActivatedRoute, Params } from '@angular/router';
-
+import { Ng2ImgMaxService } from 'ng2-img-max';
 
 @Component({
   selector: 'app-posts',
@@ -11,7 +11,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class PostsComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, private websiteService: WebsiteService) {}
+  constructor(private activatedRoute: ActivatedRoute, private websiteService: WebsiteService, private ng2ImgMax: Ng2ImgMaxService) {}
   ownWebsite: Website;
   pageOrder;
   page;
@@ -32,8 +32,9 @@ export class PostsComponent implements OnInit {
             this.page = page;
           }
         }
-      })
+      });
   }
+
   formatDate = function (date) {
     var dateOut = new Date(date);
     return dateOut;
@@ -98,21 +99,14 @@ export class PostsComponent implements OnInit {
     sure.classList.add("show");
     sure.classList.remove('none');
   }
-  cancelDelete = function(){
-    let sure=document.getElementById('deleteDiv');
-    // let postOrderInput=document.getElementById("hiddenPostOrder")
-    // postOrderInput.setAttribute('value',postOrder);
-    sure.classList.add("none");
-    sure.classList.remove('show');
 
-  }
   deletePost = function () {
     let postOrderInput=document.getElementById("hiddenPostOrder")
     let input = postOrderInput.getAttribute("value");
     console.log(input);
     let li=document.getElementById("li"+input);
     li.style.display="none";
-    this.cancelDelete();
+    this.cancelAddPost("deleteDiv");
 
     this.websiteService.deletePost(input, this.pageOrder);
   }
@@ -123,42 +117,51 @@ export class PostsComponent implements OnInit {
     sure.classList.add("show");
     sure.classList.remove('none');
   }
-  cancelAddPost = function(){
-    let sure=document.getElementById('addDiv');
+  
+  cancelAddPost = function (id) {
+    let sure = document.getElementById(id);
     // let postOrderInput=document.getElementById("hiddenPostOrder")
     // postOrderInput.setAttribute('value',postOrder);
     sure.classList.add("none");
     sure.classList.remove('show');
+    if (id == "addDivTextAndImage") {
+      let img = document.getElementById("imageUpload");
+      img.removeAttribute('src');
 
-  }
-  cancelAddTextPost = function(){
-    let sure=document.getElementById('addDivText');
-    // let postOrderInput=document.getElementById("hiddenPostOrder")
-    // postOrderInput.setAttribute('value',postOrder);
-    sure.classList.add("none");
-    sure.classList.remove('show');
+      var btnUpload = document.getElementById("btnUploadTextAndImage");
+      btnUpload.removeAttribute("disabled");
 
+      var btn = document.getElementById("addPostTextAndImage");
+      btn.setAttribute("disabled", "");
+    }
+    if (id == "addDivTextAndMultipleImages") {
+      let arrimg = document.getElementsByClassName("imageUploadTextAndMultipleImages");
+      let divImgs=document.getElementById("TextAndMultipleImagesDiv")
+
+      var btnUpload = document.getElementById("btnUploadTextAndImage");
+      btnUpload.removeAttribute("disabled");
+
+      for(let i = 0; i<arrimg.length;i++){
+        divImgs.removeChild(arrimg[i]);
+      }
+    }
   }
-  addPost = function () {
-    let sure=document.getElementById('addDivText');
-    // let postOrderInput=document.getElementById("hiddenPostOrder")
-    // postOrderInput.setAttribute('value',postOrder);
+
+
+  showAddPost=function(id){
+    let sure=document.getElementById(id);
     sure.classList.add("show");
     sure.classList.remove('none');
-    this.cancelAddPost();
+    this.cancelAddPost("addDiv");
 
-    // this.websiteService.deletePost(input, this.pageOrder);
   }
 
   addPostDef = function () {
-    console.log("sup");
     let txtTitle=((document.getElementById("addText") as HTMLInputElement).value);
     let txtTxt=((document.getElementById("addTextarea") as HTMLInputElement).value);
     console.log(txtTitle, txtTxt);
     
-    // li.style.display="none";
-    // this.cancelDelete();
-    this.cancelAddTextPost();
+    this.cancelAddPost("addDivText");
     this.websiteService.addPost(txtTitle, txtTxt, this.pageOrder)
       .subscribe(website => {
         // console.log(website);
@@ -185,6 +188,138 @@ export class PostsComponent implements OnInit {
     }
     console.log(this.pageOrder);
     this.websiteService.editvisibilityPost(this.pageOrder,input);
+  }
+
+  onFileChanged(event) {
+    var btnUpload = document.getElementById("btnUploadTextAndImage");
+    btnUpload.setAttribute("disabled", "");
+    let  uploadedImageBlob: Blob;
+
+    var btn = document.getElementById("addPostTextAndImage");
+    btn.setAttribute("disabled", "");
+    let img = document.getElementById("imageUpload");
+    let selectedFile: File;
+    selectedFile = event.target.files[0];
+    console.log("orig: " + selectedFile);
+
+    this.ng2ImgMax.resizeImage(selectedFile, 1280, 10000).subscribe(
+      result => {
+        console.log("resize blob?: " + result);
+        uploadedImageBlob = result;
+
+        var reader = new FileReader();
+        reader.onload = function (e: any) {
+          img.setAttribute('src', e.target.result);
+        }
+        reader.readAsDataURL(uploadedImageBlob);
+        btn.removeAttribute("disabled");
+      },
+      error => {
+        console.log('resizeError', error);
+      });
+
+    var reader = new FileReader();
+    reader.onload = function (e: any) {
+      img.setAttribute('src', e.target.result);
+    }
+    reader.readAsDataURL(uploadedImageBlob);
+
+    img.classList.add("show")
+    img.classList.remove("none")
+
+  }
+
+  addPostTextAndImageDef = function () {
+    let txtTitle=((document.getElementById("addText1") as HTMLInputElement).value);
+    let txtTxt=((document.getElementById("addTextarea1") as HTMLInputElement).value);
+    let img = (document.getElementById("imageUpload") as HTMLImageElement).src;
+    let arrImg=[img];
+    console.log(txtTitle+txtTxt);
+    
+    this.cancelAddPost("addDivTextAndImage");
+    this.websiteService.addPostWithImage(txtTitle, txtTxt, arrImg, this.pageOrder)
+      .subscribe(website => {
+        // console.log(website);
+        this.ownWebsite = website;
+        for (let page of this.ownWebsite.pages) {
+          if (page.pageOrder == this.pageOrder) {
+            // console.log('juist');
+            // console.log(page);
+            this.page = page;
+        }
+      }
+    });
+  }
+  onFileChangedMultipleImages(event) {
+    var btnUpload = document.getElementById("btnUploadTextAndMultipleImages");
+    btnUpload.setAttribute("disabled", "");
+    let  uploadedImageBlob: Blob;
+    let ImgDiv=document.getElementById("TextAndMultipleImagesDiv")
+    var btn = document.getElementById("addPostTextAndMultipleImages");
+    btn.setAttribute("disabled", "");
+    // let img = document.getElementById("imageUpload");
+    let arrImages=[];
+
+    for (let i = 0; i < event.target.files.length; i++) {
+
+      let selectedFile: File;
+      selectedFile = event.target.files[i];
+          this.ng2ImgMax.resizeImage(selectedFile, 1280, 10000).subscribe(
+      result => {
+        console.log("resize blob?: " + result);
+        uploadedImageBlob = result;
+
+        var reader = new FileReader();
+        reader.onload = function (e: any) {
+          // img.setAttribute('src', e.target.result);
+          let newImg=document.createElement("img");
+          newImg.classList.add("imageUploadTextAndMultipleImages")
+          newImg.setAttribute("id","kapot"+i);
+          newImg.style.height="160px";
+          newImg.style.width="auto";
+          newImg.style.margin="0 10px 0 10px";
+          newImg.style.borderRadius="6px";
+          
+          newImg.setAttribute("src",e.target.result);
+          ImgDiv.appendChild(newImg);
+          arrImages.push(e.target.result);
+
+        }
+        reader.readAsDataURL(uploadedImageBlob);
+        if(i==event.target.files.length-1){
+          btn.removeAttribute("disabled");
+        }
+      },
+      error => {
+        console.log('resizeError', error);
+      });
+    }
+  }
+
+  addPostTextAndMultipleImagesDef = function () {
+    let txtTitle=((document.getElementById("addText1") as HTMLInputElement).value);
+    let txtTxt=((document.getElementById("addTextarea1") as HTMLInputElement).value);
+    let img = document.getElementsByClassName("imageUploadTextAndMultipleImages");
+    let arrImages=[];
+    for(let i = 0; i<img.length;i++){
+      arrImages.push((img[i]as HTMLImageElement).src);
+    }
+    
+    console.log(txtTitle+txtTxt);
+    
+    this.cancelAddPost("addDivTextAndMultipleImages");
+    this.websiteService.addPostWithImage(txtTitle, txtTxt, arrImages, this.pageOrder)
+      .subscribe(website => {
+        // console.log(website);
+        this.ownWebsite = website;
+        for (let page of this.ownWebsite.pages) {
+          if (page.pageOrder == this.pageOrder) {
+            // console.log('juist');
+            // console.log(page);
+            this.page = page;
+        }
+      }
+    });
   }
 
 }

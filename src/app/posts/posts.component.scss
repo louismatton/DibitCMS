@@ -19,6 +19,113 @@
       color: white;
     }
   }
+  .confirmationpopup {
+    div {
+      .options {
+        padding-top: 30px;
+        .text {
+          margin-bottom: 20px;
+        }
+        .textarea {
+          height: 330px;
+        }
+      }
+      .divButtons {
+        position: absolute;
+        bottom: 30px;
+        display: flex;
+        width: 100%;
+        /* align-items: flex-start; */
+        /* align-content: flex-start; */
+        right: 30px;
+        #imageUpload {
+          margin-left: 60px;
+        }
+        img {
+          border-radius: 6px;
+          height: 160px;
+          margin-right: auto;
+          width: auto;
+        }
+        .button {
+          margin-top: auto;
+        }
+      }
+      .inputs {
+        display: flex;
+        flex-wrap: wrap;
+        .option {
+          cursor: pointer;
+          min-width: 450px;
+          width: auto;
+          height: 180px;
+          padding: 10px;
+          margin: auto;
+          margin-bottom: 15px;
+          margin-top: 15px;
+          border: 1px solid $darkGray;
+          border-radius: 30px;
+          text-align: center;
+          h4 {
+            font-size: 2em;
+            font-family: EnzoLight;
+            padding-bottom: 10px;
+          }
+          i {
+            font-size: 8em;
+          }
+        }
+      }
+    }
+  }
+
+  #addDiv {
+    div {
+      .divButtons {
+        .btnCancel {
+          margin-left: auto;
+        }
+      }
+    }
+  }
+  #addDivText {
+    div {
+      .divButtons {
+        .btnSave {
+          margin-left: auto;
+        }
+      }
+    }
+  }
+  #addDivTextAndMultipleImages {
+    div {
+      .divButtons {
+        #btnUploadTextAndMultipleImages {
+          margin-left: 10px;
+        }
+        #TextAndMultipleImagesDiv {
+          margin-left: 60px;
+          width: 610px;
+          display: flex;
+          overflow-x: scroll;
+        }
+      }
+      .options {
+        .textarea {
+          height: 220px;
+        }
+      }
+    }
+  }
+  #addDivTextAndImage {
+    div {
+      .options {
+        .textarea {
+          height: 220px;
+        }
+      }
+    }
+  }
   ul {
     li {
       .pageGroup>i {
@@ -33,15 +140,15 @@
           margin-right: 20px;
           margin-left: 20px;
         }
-        .true i{
-          color:$darkGray;
+        .true i {
+          color: $darkGray;
           cursor: pointer;
-          padding-top:8px;
+          padding-top: 8px;
         }
-        .false i{
+        .false i {
           cursor: pointer;
-          padding-top:8px;
-          color:$lightGray;
+          padding-top: 8px;
+          color: $lightGray;
         }
         display: flex;
         margin-top:10px;
@@ -61,14 +168,10 @@
           margin-right: 20px; // margin-left:auto;
         }
         .btnSave {
-          background-color: $clrGreen;
-          margin-right: 20px;
+          background-color: $clrGreen; // margin-right: 20px;
           i {
             font-size: 1em;
           }
-        }
-        .btnTrash {
-          margin-right: 20px; // margin-left:auto;
         }
       }
       list-style: none;
@@ -81,14 +184,19 @@
       }
     }
   }
-  .options {
-    padding-top: 30px;
-    .text {
-      margin-bottom: 20px;
-    }
-    .textarea {
-      height: 330px;
-    }
-  }
+}
+img {
+  border-radius: 6px;
+  height: 160px;
+  margin-right: auto;
+  width: auto;
+}
+.imageUploadTextAndMultipleImages{
+  width: auto;
+  height: 160px;
+}
+.kapot1{
+  width: auto;
+  height: 160px;
 
 }
