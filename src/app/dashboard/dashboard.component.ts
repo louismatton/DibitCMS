@@ -19,16 +19,16 @@ export class DashboardComponent implements OnInit {
     const requestOptions = {
       headers: new HttpHeaders(this.authdata),
     };
-    console.log((this.authdataraw.token));
+    // console.log((this.authdataraw.token));
 
-    this.http.get('http://localhost:3000/users', requestOptions)
-      .map(res => {
-        //Maps the response object sent from the server
-        // console.log(res);
-        console.log(res);
-      }).subscribe(users => {
-        console.log(users);
-      });
+    // this.http.get('http://localhost:3000/users', requestOptions)
+    //   .map(res => {
+    //     //Maps the response object sent from the server
+    //     // console.log(res);
+    //     console.log(res);
+    //   }).subscribe(users => {
+    //     console.log(users);
+    //   });
   }
 }
 

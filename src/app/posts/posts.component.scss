@@ -78,7 +78,6 @@
       }
     }
   }
-
   #addDiv {
     div {
       .divButtons {
@@ -161,7 +160,10 @@
           margin-left: 20px;
         }
         .date {
-          margin-right: 90px;
+          margin-right: 90px; // margin-left: auto;
+        }
+        .type {
+          margin-right: 70px;
           margin-left: auto;
         }
         .btnEditPages1 {
@@ -172,6 +174,18 @@
           i {
             font-size: 1em;
           }
+        }
+
+      }
+      .editMultipleImg {
+        margin-right: 20px;
+        margin-left: 20px;
+        margin-bottom: 20px;
+        max-width: 800px;
+        display: flex;
+        overflow-x: scroll;
+        img{
+          margin-right: 10px;
         }
       }
       list-style: none;
@@ -185,18 +199,20 @@
     }
   }
 }
+
 img {
   border-radius: 6px;
   height: 160px;
   margin-right: auto;
   width: auto;
 }
-.imageUploadTextAndMultipleImages{
+
+.imageUploadTextAndMultipleImages {
   width: auto;
   height: 160px;
 }
-.kapot1{
+
+.kapot1 {
   width: auto;
   height: 160px;
-
 }

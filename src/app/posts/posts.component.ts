@@ -41,7 +41,7 @@ export class PostsComponent implements OnInit {
   };
   editPost = function (postOrder) {
     // console.log(postOrder);
-    let edit=document.getElementById('vis'+postOrder);
+    let vis=document.getElementById('vis'+postOrder);
 
     let titletxt=document.getElementById("titletxt"+postOrder);
     let title=document.getElementById("title"+postOrder);
@@ -50,7 +50,9 @@ export class PostsComponent implements OnInit {
     let btnSave=document.getElementById("save"+postOrder);
     let btnEdit=document.getElementById("edit"+postOrder);
 
-    edit.classList.add("none");
+    vis.classList.add("none");
+    vis.classList.remove("show");
+    
     titletxt.classList.remove("none");
     titletxt.classList.add("show");
     title.classList.remove("show");
@@ -77,9 +79,10 @@ export class PostsComponent implements OnInit {
     let txt=document.getElementById("text"+post.postOrder);
     let btnSave=document.getElementById("save"+post.postOrder);
     let btnEdit=document.getElementById("edit"+post.postOrder);
-    let edit=document.getElementById('vis'+post.postOrder);
+    let vis=document.getElementById('vis'+post.postOrder);
 
-    edit.classList.add("show");
+    vis.classList.add("show");
+    vis.classList.remove("none");
   
     titletxt.classList.remove("show");
     titletxt.classList.add("none");
@@ -140,10 +143,8 @@ export class PostsComponent implements OnInit {
 
       var btnUpload = document.getElementById("btnUploadTextAndImage");
       btnUpload.removeAttribute("disabled");
+      divImgs.innerHTML=""
 
-      for(let i = 0; i<arrimg.length;i++){
-        divImgs.removeChild(arrimg[i]);
-      }
     }
   }
 
@@ -297,8 +298,8 @@ export class PostsComponent implements OnInit {
   }
 
   addPostTextAndMultipleImagesDef = function () {
-    let txtTitle=((document.getElementById("addText1") as HTMLInputElement).value);
-    let txtTxt=((document.getElementById("addTextarea1") as HTMLInputElement).value);
+    let txtTitle=((document.getElementById("addText2") as HTMLInputElement).value);
+    let txtTxt=((document.getElementById("addTextarea2") as HTMLInputElement).value);
     let img = document.getElementsByClassName("imageUploadTextAndMultipleImages");
     let arrImages=[];
     for(let i = 0; i<img.length;i++){
@@ -314,13 +315,17 @@ export class PostsComponent implements OnInit {
         this.ownWebsite = website;
         for (let page of this.ownWebsite.pages) {
           if (page.pageOrder == this.pageOrder) {
-            // console.log('juist');
-            // console.log(page);
             this.page = page;
         }
       }
     });
-  }
+    document.getElementById("addText2").setAttribute("value","");
+    document.getElementById("addText2").innerHTML="";
+    (document.getElementById("addText2") as HTMLInputElement).value="";
+    (document.getElementById("addTextarea2") as HTMLInputElement).value="";
+    
+    document.getElementById("addTextarea2").setAttribute("value","");
+    }
 
 }
 

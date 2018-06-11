@@ -21,7 +21,6 @@ export class WebsiteService {
   authdata = {
     Authorization: this.authdataraw.token
   };
-
   requestOptions = {
     headers: new HttpHeaders(this.authdata)
   };
@@ -30,7 +29,6 @@ export class WebsiteService {
     //returns the observable of http post request 
     return this.http.post(`${this.websiteUrl}`, website);
   }
-
 
   getOwnWebsite(): Observable < Website > {
     return this.http.get(`${this.websiteUrl}`, this.requestOptions)
@@ -60,10 +58,13 @@ export class WebsiteService {
     this.http.post(this.websiteUrl + '/addpost', post, this.requestOptions)
       .subscribe(res => {
         console.log("done", res);
+        window.location.reload();
+
         // return res as Website;
       });
   }
-  addPostWithImage(txtTitle, txtTxt,arrimages, pageOrder): void {
+
+  addPostWithImage(txtTitle, txtTxt, arrimages, pageOrder): void {
     var post = {
       "postTitle": txtTitle,
       "postText": txtTxt,
@@ -74,10 +75,9 @@ export class WebsiteService {
     this.http.post(this.websiteUrl + '/addpost', post, this.requestOptions)
       .subscribe(res => {
         console.log("done", res);
-        // return res as Website;
+        window.location.reload();
       });
   }
-
 
   addPage(pageTitle): void {
     var post = {
@@ -87,33 +87,38 @@ export class WebsiteService {
       .subscribe(res => {
         console.log("done", res);
         // return res as Website;
+        window.location.reload();
+
       });
   }
+
   deletePost(postOrder, pageOrder): void {
     var req = {
       "postOrder": postOrder,
       "pageOrder": pageOrder
     }
-
-    // post.pageOrder=Number(pageOrder);
-
     this.http.post(this.websiteUrl + '/deletepost', req, this.requestOptions)
       .subscribe(res => {
         console.log("done", res);
+        window.location.reload();
+
         // return res as Website;
       });
   }
+
   deletePage(pageOrder): void {
     var req = {
       "pageOrder": pageOrder
     }
-
     this.http.post(this.websiteUrl + '/deletepage', req, this.requestOptions)
       .subscribe(res => {
         console.log("done", res);
+        window.location.reload();
+
         // return res as Website;
       });
   }
+
   editvisibilityPage(pageOrder): void {
     // post.pageOrder = Number(pageOrder);
     var req = {
@@ -126,8 +131,7 @@ export class WebsiteService {
         // return res as Website;
       });
   }
-  // this.websiteService.editvisibilityPost(this.postOrder,input);
-
+  
   editvisibilityPost(pageOrder, postOrder): void {
     // post.pageOrder = Number(pageOrder);
     var req = {
@@ -158,10 +162,8 @@ export class WebsiteService {
     return this.http.put(editUrl, "");
   }
 
-  //Default Error handling method.
   private handleError(error: any): Promise < any > {
-    console.error('An error occurred', error); // for demo purposes only
+    console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
 }
-

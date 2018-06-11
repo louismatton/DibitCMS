@@ -10,7 +10,7 @@
         <input type="hidden" id="hiddenPostOrder">
         <button class="button btnSave" id="delete" (click)="deletePost()">
           <i class="fa fa-trash-alt"></i>Remove</button>
-        <button class="button btnCancel" id="cancel" (click)="cancelDelete()">
+        <button class="button btnCancel" id="cancel" (click)='cancelAddPost("deleteDiv")'>
           <i class="fas fa-ban"></i>Cancel</button>
       </div>
 
@@ -95,14 +95,13 @@
     <div>
       <h2>Add Post</h2>
       <div class="options">
-        <input type="text" class="text" name="typePost" placeholder="title" id="addText1">
-        <textarea name="postText" id="addTextarea1" class="textarea" placeholder="text" rows="10"></textarea>
+        <input type="text" class="text" name="typePost" placeholder="title" id="addText2">
+        <textarea name="postText" id="addTextarea2" class="textarea" placeholder="text" rows="10"></textarea>
       </div>
       <div class="divButtons">
 
         <div id="TextAndMultipleImagesDiv">
           <!-- hier komen fotos -->
-          
         </div>
 
         <input style="display: none" type="file" (change)="onFileChangedMultipleImages($event)" #fileInputTextAndMultipleImages accept="image/x-png,image/gif,image/jpeg"
@@ -133,15 +132,17 @@
         <i class="fas fa-bars fa-5x"></i>
         <p class="postTitle" id="title{{post.postOrder}}" class="show"> {{post.postTitle}}</p>
 
-        <a class="{{post.postVisible}}" id="vis{{post.postOrder}}" (click)="postVisible(post.postOrder)">
+        <a class="{{post.postVisible}} show" id="vis{{post.postOrder}}" (click)="postVisible(post.postOrder)">
           <i class="fas fa-eye"></i>
         </a>
 
-
-        <!-- <input type="text" id="titletxt{{post.postOrder}}" [value]="username" (input)="username = $event.target.value"  class="editTitle none"> -->
         <input type="text" name="title" id="titletxt{{post.postOrder}}" [(ngModel)]="post.postTitle" class="editTitle none">
 
         <!-- <input type="text"  id="titletxt{{post.postOrder}}"  value="{{post.postTitle}}" class="editTitle none"> -->
+        <i *ngIf='post.postType =="singlePhoto"' class="far fa-image type"></i>
+        <i *ngIf='post.postType =="multiplePhotos"' class="far fa-images type"></i>
+        <i *ngIf='post.postType =="noPhoto"' class="type"></i>
+
         <p class="date">{{post.postDate|date:'dd/MM/yyyy'}}</p>
         <!-- <a class="button btnEditPages1" href="/posts?pageorder={{page.pageOrder}}"><i class="fa fa-edit"></i>Edit</a> -->
 
@@ -157,6 +158,14 @@
       </div>
       <div id="text{{post.postOrder}}" class="none">
         <textarea name="postText" id="textarea{{post.postOrder}}" class="textarea" [(ngModel)]="post.postText" rows="10"></textarea>
+        <img *ngIf='post.postType =="singlePhoto"' src="{{post.postPhotos[0]}}">
+        <div *ngIf='post.postType =="multiplePhotos"' class="editMultipleImg">
+          <img *ngFor='let img of post.postPhotos' src="{{img}}" alt="">
+
+
+        </div>
+
+
       </div>
       <hr>
     </li>
