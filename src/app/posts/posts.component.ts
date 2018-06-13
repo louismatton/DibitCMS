@@ -275,7 +275,6 @@ export class PostsComponent implements OnInit {
           // img.setAttribute('src', e.target.result);
           let newImg=document.createElement("img");
           newImg.classList.add("imageUploadTextAndMultipleImages")
-          newImg.setAttribute("id","kapot"+i);
           newImg.style.height="160px";
           newImg.style.width="auto";
           newImg.style.margin="0 10px 0 10px";

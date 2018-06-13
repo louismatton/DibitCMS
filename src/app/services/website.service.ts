@@ -146,24 +146,14 @@ export class WebsiteService {
       });
   }
 
-  getWebsiteById(id: String): Observable < Website > {
-    let getUrl = `${this.websiteUrl}`
-    return this.http.get(getUrl + "/" + id)
-      .map(res => {
-        //Maps the response object sent from the server
+  // getWebsiteById(id: String): Observable < Website > {
+  //   let getUrl = `${this.websiteUrl}`
+  //   return this.http.get(getUrl + "/" + id)
+  //     .map(res => {
+  //       //Maps the response object sent from the server
 
-        return res as Website;
-      })
-  }
+  //       return res as Website;
+  //     })
+  // }
 
-  editWebsiteStatus(id: String, status: Number) {
-    let editUrl = `${this.websiteUrl}/status/${id}/${status}`;
-    console.log("editurl", editUrl, "  status", status);
-    return this.http.put(editUrl, "");
-  }
-
-  private handleError(error: any): Promise < any > {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
-  }
 }
